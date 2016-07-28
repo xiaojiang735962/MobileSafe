@@ -14,9 +14,19 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
+
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    	<!-- 取消标题栏 -->
-    	<item name="android:windowNoTitle">true</item>
+        <!-- 取消标题栏 -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="TitleStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/green</item>
     </style>
 
 </resources>

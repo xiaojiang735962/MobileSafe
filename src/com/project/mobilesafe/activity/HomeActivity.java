@@ -4,9 +4,12 @@ package com.project.mobilesafe.activity;
 import com.project.mobilesafe.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -27,6 +30,22 @@ public class HomeActivity extends Activity {
 		
 		gv_home = (GridView) findViewById(R.id.gv_home);
 		gv_home.setAdapter(new HomeAdapter());
+		gv_home.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				switch (position) {
+				case 8:
+					//跳转至SettingActivity页面(设置中心)
+					startActivity(new Intent(HomeActivity.this, SettingActivity.class));
+					break;
+
+				default:
+					break;
+				}
+			}
+		});
 	}
 	class HomeAdapter extends BaseAdapter{
 		@Override
