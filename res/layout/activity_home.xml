@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="功能列表" 
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:background="@color/green"
+        />
+    <com.project.mobilesafe.view.FocusedTextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="手机安全卫士，每时每刻保护你的手机,请放心使用，此软件为绿色安全软件"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        />
+    <GridView
+        android:id="@+id/gv_home"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:numColumns="3"
+        android:verticalSpacing="20dp"
+        />
+
+</LinearLayout>
