@@ -240,6 +240,22 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int customNavigationLayout=0x7f010032;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int desc_off=0x7f010070;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int desc_on=0x7f01006f;
         /**  Whether this spinner should mark child views as enabled/disabled when
              the spinner itself is enabled/disabled. 
          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
@@ -618,6 +634,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int selectableItemBackground=0x7f010019;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int set_title=0x7f01006e;
         /**  How this item should display in the Action Bar, if present. 
          <p>Must be one or more (separated by '|') of the following constant values.</p>
 <table>
@@ -1079,17 +1103,28 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int home_apps=0x7f020057;
-        public static final int home_callmsgsafe=0x7f020058;
-        public static final int home_netmanager=0x7f020059;
-        public static final int home_safe=0x7f02005a;
-        public static final int home_settings=0x7f02005b;
-        public static final int home_sysoptimize=0x7f02005c;
-        public static final int home_taskmanager=0x7f02005d;
-        public static final int home_tools=0x7f02005e;
-        public static final int home_trojan=0x7f02005f;
-        public static final int ic_launcher=0x7f020060;
-        public static final int launcher_bg=0x7f020061;
+        public static final int btn_green_normal=0x7f020057;
+        public static final int btn_green_pressed=0x7f020058;
+        public static final int btn_green_selector=0x7f020059;
+        public static final int btn_light_green_selector=0x7f02005a;
+        public static final int function_greenbutton_normal=0x7f02005b;
+        public static final int function_greenbutton_pressed=0x7f02005c;
+        public static final int home_apps=0x7f02005d;
+        public static final int home_callmsgsafe=0x7f02005e;
+        public static final int home_netmanager=0x7f02005f;
+        public static final int home_safe=0x7f020060;
+        public static final int home_settings=0x7f020061;
+        public static final int home_sysoptimize=0x7f020062;
+        public static final int home_taskmanager=0x7f020063;
+        public static final int home_tools=0x7f020064;
+        public static final int home_trojan=0x7f020065;
+        public static final int ic_launcher=0x7f020066;
+        public static final int launcher_bg=0x7f020067;
+        public static final int next=0x7f020068;
+        public static final int previous=0x7f020069;
+        public static final int setup1=0x7f02006a;
+        public static final int setup2=0x7f02006b;
+        public static final int setup3=0x7f02006c;
     }
     public static final class id {
         public static final int action_bar=0x7f09001c;
@@ -1103,11 +1138,14 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f090002;
         public static final int action_menu_presenter=0x7f090003;
         public static final int action_mode_close_button=0x7f090024;
-        public static final int action_settings=0x7f090044;
+        public static final int action_settings=0x7f09004c;
         public static final int activity_chooser_view_content=0x7f090025;
         public static final int always=0x7f09000f;
         public static final int beginning=0x7f090016;
-        public static final int cb_status=0x7f090043;
+        public static final int bt_cancel=0x7f090045;
+        public static final int bt_confirm=0x7f090044;
+        public static final int button1=0x7f09003e;
+        public static final int cb_status=0x7f09004b;
         public static final int checkbox=0x7f09002d;
         public static final int collapseActionView=0x7f090010;
         public static final int default_activity_button=0x7f090028;
@@ -1116,6 +1154,8 @@ containing a value of this type.
         public static final int dropdown=0x7f090015;
         public static final int edit_query=0x7f090030;
         public static final int end=0x7f090017;
+        public static final int et_password=0x7f090043;
+        public static final int et_password_confirm=0x7f090046;
         public static final int expand_activities_button=0x7f090026;
         public static final int expanded_menu=0x7f09002c;
         public static final int gv_home=0x7f09003c;
@@ -1124,7 +1164,7 @@ containing a value of this type.
         public static final int icon=0x7f09002a;
         public static final int ifRoom=0x7f090011;
         public static final int image=0x7f090027;
-        public static final int iv_item=0x7f09003f;
+        public static final int iv_item=0x7f090047;
         public static final int listMode=0x7f090006;
         public static final int list_item=0x7f090029;
         public static final int middle=0x7f090018;
@@ -1134,6 +1174,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f090004;
         public static final int progress_horizontal=0x7f090005;
         public static final int radio=0x7f09002f;
+        public static final int rl_root=0x7f090040;
         public static final int search_badge=0x7f090032;
         public static final int search_bar=0x7f090031;
         public static final int search_button=0x7f090033;
@@ -1148,16 +1189,18 @@ containing a value of this type.
         public static final int showCustom=0x7f09000b;
         public static final int showHome=0x7f09000c;
         public static final int showTitle=0x7f09000d;
+        public static final int siv_sim=0x7f09003f;
+        public static final int siv_update=0x7f09003d;
         public static final int split_action_bar=0x7f09001e;
         public static final int submit_area=0x7f090039;
         public static final int tabMode=0x7f090008;
         public static final int title=0x7f09002b;
         public static final int top_action_bar=0x7f090020;
-        public static final int tv_desc=0x7f090042;
-        public static final int tv_item=0x7f090040;
-        public static final int tv_progress=0x7f09003e;
-        public static final int tv_title=0x7f090041;
-        public static final int tv_version=0x7f09003d;
+        public static final int tv_desc=0x7f09004a;
+        public static final int tv_item=0x7f090048;
+        public static final int tv_progress=0x7f090042;
+        public static final int tv_title=0x7f090049;
+        public static final int tv_version=0x7f090041;
         public static final int up=0x7f090021;
         public static final int useLogo=0x7f09000e;
         public static final int withText=0x7f090013;
@@ -1213,11 +1256,18 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_home=0x7f030018;
-        public static final int activity_setting=0x7f030019;
-        public static final int activity_splash=0x7f03001a;
-        public static final int home_list_item=0x7f03001b;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001c;
-        public static final int view_setting_item=0x7f03001d;
+        public static final int activity_lost_find=0x7f030019;
+        public static final int activity_setting=0x7f03001a;
+        public static final int activity_setup1=0x7f03001b;
+        public static final int activity_setup2=0x7f03001c;
+        public static final int activity_setup3=0x7f03001d;
+        public static final int activity_setup4=0x7f03001e;
+        public static final int activity_splash=0x7f03001f;
+        public static final int dialog_input_password=0x7f030020;
+        public static final int dialog_set_password=0x7f030021;
+        public static final int home_list_item=0x7f030022;
+        public static final int support_simple_spinner_dropdown_item=0x7f030023;
+        public static final int view_setting_item=0x7f030024;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
@@ -1293,6 +1343,9 @@ containing a value of this type.
         /**  Application theme. 
          */
         public static final int AppTheme=0x7f0b008c;
+        public static final int ContentStyle=0x7f0b008e;
+        public static final int NextStyle=0x7f0b008f;
+        public static final int PreviousStyle=0x7f0b0090;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0063;
@@ -2799,6 +2852,65 @@ containing a value of this type.
           @attr name com.project.mobilesafe:queryHint
         */
         public static final int SearchView_queryHint = 4;
+        /** Attributes that can be used with a SettingItemView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #SettingItemView_desc_off com.project.mobilesafe:desc_off}</code></td><td></td></tr>
+           <tr><td><code>{@link #SettingItemView_desc_on com.project.mobilesafe:desc_on}</code></td><td></td></tr>
+           <tr><td><code>{@link #SettingItemView_set_title com.project.mobilesafe:set_title}</code></td><td></td></tr>
+           </table>
+           @see #SettingItemView_desc_off
+           @see #SettingItemView_desc_on
+           @see #SettingItemView_set_title
+         */
+        public static final int[] SettingItemView = {
+            0x7f01006e, 0x7f01006f, 0x7f010070
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.project.mobilesafe.R.attr#desc_off}
+          attribute's value can be found in the {@link #SettingItemView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.project.mobilesafe:desc_off
+        */
+        public static final int SettingItemView_desc_off = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.project.mobilesafe.R.attr#desc_on}
+          attribute's value can be found in the {@link #SettingItemView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.project.mobilesafe:desc_on
+        */
+        public static final int SettingItemView_desc_on = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.project.mobilesafe.R.attr#set_title}
+          attribute's value can be found in the {@link #SettingItemView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.project.mobilesafe:set_title
+        */
+        public static final int SettingItemView_set_title = 0;
         /** Attributes that can be used with a Spinner.
            <p>Includes the following attributes:</p>
            <table>

@@ -23,6 +23,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -33,6 +34,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,15 +80,30 @@ public class SplashActivity extends Activity {
 			}
 		}
 	};
+	private SharedPreferences mPref;
+	private RelativeLayout rl_root;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 		
+		rl_root = (RelativeLayout) findViewById(R.id.rl_root);
 		tv_version = (TextView) findViewById(R.id.tv_version);
 		tv_version.setText("版本名：" + getVersionName());
 		tv_progress = (TextView) findViewById(R.id.tv_progress);
-		checkVersion();
+		mPref = getSharedPreferences("config", MODE_PRIVATE);
+		//判断是否需要自动更新
+		boolean auto_update = mPref.getBoolean("auto_update", true);
+		if(auto_update){
+			checkVersion();
+		}else{
+			//延迟三秒后发送消息
+			mHandler.sendEmptyMessageDelayed(CODE_ENTER_HOME, 3000);
+		}
+		//闪屏添加渐变的动画效果(从透明到不透明)
+		AlphaAnimation alpha = new AlphaAnimation(0.2f, 1);
+		alpha.setDuration(2000);
+		rl_root.startAnimation(alpha);
 	}
 	//获取本地版本名
 	private String getVersionName(){

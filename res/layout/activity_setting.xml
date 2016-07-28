@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:setting="http://schemas.android.com/apk/res/com.project.mobilesafe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -8,8 +9,12 @@
         style="@style/TitleStyle"
         android:text="设置中心" />
 	<com.project.mobilesafe.view.SettingItemView
+	    android:id="@+id/siv_update"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
+	    setting:set_title="自动更新设置"
+	    setting:desc_on="自动更新已开启"
+	    setting:desc_off="自动更新已关闭"
 	    />
     
 </LinearLayout>
