@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="@drawable/gradient_box" android:state_pressed="true"/>
+    <!-- pressed 按下的图片-->
+    <item android:drawable="@drawable/gradient_box" android:state_focused="true"/>
+    <!-- focused 获取焦点的图片-->
+    <item android:drawable="@android:color/transparent" />
+	<!-- default 默认的图片-->
+</selector>

@@ -18,8 +18,10 @@
         android:text="报警短信会发送给安全号码" />
 
     <EditText 
+        android:id="@+id/et_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="phone"
         android:hint="请输入或者选择安全号码"
         />
    	<Button 
@@ -27,6 +29,7 @@
    	    android:layout_height="wrap_content"
    	    android:background="@drawable/btn_light_green_selector"
    	    android:text="选择联系人"
+   	    android:onClick="selectContant"
    	    />
   
 
