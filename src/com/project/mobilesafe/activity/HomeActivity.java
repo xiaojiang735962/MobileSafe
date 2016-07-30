@@ -50,6 +50,10 @@ public class HomeActivity extends Activity {
 					//跳转至设置密码对话框(手机防盗)
 					showPasswordDialog();
 					break;
+				case 7:
+					//跳转至AToolsActivity(高级工具)
+					startActivity(new Intent(HomeActivity.this, AToolsActivity.class));
+					break;
 				case 8:
 					//跳转至SettingActivity页面(设置中心)
 					startActivity(new Intent(HomeActivity.this, SettingActivity.class));

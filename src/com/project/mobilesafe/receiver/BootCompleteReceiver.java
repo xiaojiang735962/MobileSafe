@@ -22,11 +22,12 @@ public class BootCompleteReceiver extends BroadcastReceiver {
 				if(!TextUtils.isEmpty(sim)){
 					//获取当前的SIM序列号
 					TelephonyManager mManager = (TelephonyManager) context.getSystemService(context.TELEPHONY_SERVICE);
-					String currentSIM = mManager.getSimSerialNumber() + "1";
+					//String currentSIM = mManager.getSimSerialNumber() + "1";//(SIM卡切换时检测)
+					String currentSIM = mManager.getSimSerialNumber();
 					if(currentSIM.equals(sim)){
 						System.out.println("SIM卡安全");
 					}else{
-						System.out.println("SIM卡已更换，发送报警短信");
+						//System.out.println("SIM卡已更换，发送报警短信");
 						String phone = mPref.getString("safe_phone", "");
 						//发送短信给安全号码
 						SmsManager smsManager = SmsManager.getDefault();

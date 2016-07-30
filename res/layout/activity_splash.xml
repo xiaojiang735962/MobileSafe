@@ -1,31 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/rl_root"
-    tools:context="com.project.mobilesafe.activity.SplashActivity" 
-    android:background="@drawable/launcher_bg"
-    >
-
-    <TextView
-        android:id="@+id/tv_version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:shadowColor="#ff00ff"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="1"
-        />
-    <ProgressBar 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_version"
-        android:layout_centerHorizontal="true"
-        />
+    android:background="@drawable/logo"
+    tools:context="com.project.mobilesafe.activity.SplashActivity" >
 
     <TextView
         android:id="@+id/tv_progress"
@@ -34,9 +13,29 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="5dp"
-        android:visibility="gone"
-        android:textSize="16sp"
         android:textColor="@android:color/darker_gray"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_version"
+        android:layout_centerHorizontal="true"
         />
+
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"
+        android:shadowColor="#ff00ff"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:text="版本1.0"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
 </RelativeLayout>
