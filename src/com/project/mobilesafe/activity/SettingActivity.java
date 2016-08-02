@@ -1,6 +1,9 @@
 package com.project.mobilesafe.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,12 +13,15 @@ import android.view.View.OnClickListener;
 import com.project.mobilesafe.R;
 import com.project.mobilesafe.service.AddressService;
 import com.project.mobilesafe.utils.ServiceStatusUtils;
+import com.project.mobilesafe.view.SettingClickView;
 import com.project.mobilesafe.view.SettingItemView;
 
 public class SettingActivity extends Activity {
 
 	private SettingItemView siv_update;
 	private SettingItemView siv_address;
+	private SettingClickView scvAddressStyle;
+	private SettingClickView scvAddressLocation;
 	private SharedPreferences mPref;
 
 	@Override
@@ -26,7 +32,8 @@ public class SettingActivity extends Activity {
 		mPref = getSharedPreferences("config", MODE_PRIVATE);
 		initUpdateView();
 		initAddressView();
-		
+		initAddressStyle();
+		initAddressLocation();
 	}
 	//初始化自动更新的开关
 	private void initUpdateView(){
@@ -82,6 +89,55 @@ public class SettingActivity extends Activity {
 					//开启归属地服务
 					startService(new Intent(SettingActivity.this, AddressService.class));
 				}
+			}
+		});
+	}
+	final String[] items = new String[]{"半透明","活力澄","卫士蓝","金属灰","苹果绿"};
+	//修改提示框显示风格
+	private void initAddressStyle(){
+		scvAddressStyle = (SettingClickView) findViewById(R.id.scv_address_style);
+		
+		scvAddressStyle.setTitle("归属地提示框风格");
+		int style = mPref.getInt("address_style", 0);
+		scvAddressStyle.setDesc(items[style]);
+		
+		scvAddressStyle.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showSingleChooseDialog();
+			}
+		});
+	}
+	
+	//弹出选择风格的单选框
+	protected void showSingleChooseDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setIcon(R.drawable.ic_launcher);
+		builder.setTitle("归属地提示框风格");
+		//读取保存的style
+		int style = mPref.getInt("address_style", 0);
+		builder.setSingleChoiceItems(items, style, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				//保存选择的风格
+				mPref.edit().putInt("address_style", which).commit();
+				dialog.dismiss();//让dialog消失
+				
+				scvAddressStyle.setDesc(items[which]);
+			}
+		});
+		builder.setNegativeButton("Cancel", null);
+		builder.show();
+	}
+	//修改归属地显示位置
+	private void initAddressLocation(){
+		scvAddressLocation = (SettingClickView) findViewById(R.id.scv_address_location);
+		scvAddressLocation.setTitle("归属地提示框显示位置");
+		scvAddressLocation.setDesc("设置归属地提示框的显示位置");
+		scvAddressLocation.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(SettingActivity.this, DragViewActivity.class));
 			}
 		});
 	}

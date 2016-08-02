@@ -24,5 +24,15 @@
 	    setting:desc_on="归属地显示已经开启"
 	    setting:desc_off="归属地显示已经关闭"
 	    />
+	<com.project.mobilesafe.view.SettingClickView
+	    android:id="@+id/scv_address_style"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    />
+	<com.project.mobilesafe.view.SettingClickView
+	    android:id="@+id/scv_address_location"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    />
     
 </LinearLayout>
