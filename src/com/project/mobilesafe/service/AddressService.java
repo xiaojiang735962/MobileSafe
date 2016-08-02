@@ -154,7 +154,7 @@ public class AddressService extends Service {
 					if(params.y > winHeight-addressView.getHeight()){
 						params.y = winHeight-addressView.getHeight();
 					}
-					
+					//更新View的位置
 					mWM.updateViewLayout(addressView, params);
 					//重新初始化起点坐标
 					startX = (int) event.getRawX();
