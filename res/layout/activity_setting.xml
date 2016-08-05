@@ -34,5 +34,13 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    />
+	<com.project.mobilesafe.view.SettingItemView
+		android:id="@+id/siv_callsafe"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		setting:set_title="黑名单服务设置"
+		setting:desc_on="黑名单服务已经开启"
+		setting:desc_off="黑名单服务已经关闭"
+		/>
     
 </LinearLayout>
