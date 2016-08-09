@@ -51,7 +51,6 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
     private List<AppInfo> systemAppInfos;
     private PopupWindow popupWindow;
     private AppInfo clickAppInfo;
-    private UninstallReceiver receiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +59,7 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
         initUI();
         initData();
     }
+
 
     @Override
     public void onClick(View view) {
@@ -241,10 +241,10 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
         tvSD.setText("SD卡可用:" + Formatter.formatFileSize(this, sdFreeSpace));
 
         //注册卸载的广播接收者
-        receiver = new UninstallReceiver();
+       /* receiver = new UninstallReceiver();
         IntentFilter filter = new IntentFilter(Intent.ACTION_PACKAGE_REMOVED);
         filter.addDataScheme("package");
-        registerReceiver(receiver, filter);
+        registerReceiver(receiver, filter);*/
 
         //设置icList滚动监听
         icList.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -318,19 +318,17 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
 
     }
 
-    private class UninstallReceiver extends BroadcastReceiver{
+    /*private class UninstallReceiver extends BroadcastReceiver{
 
         @Override
         public void onReceive(Context context, Intent intent) {
             System.out.println("接收到卸载的广播");
-            unregisterReceiver(receiver);
         }
-    }
+    }*/
 
     private void popupWindowDismiss() {
         if (popupWindow != null && popupWindow.isShowing()) {
             popupWindow.dismiss();
-            ;
             popupWindow = null;
         }
     }

@@ -28,6 +28,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.opengl.Visibility;
 import android.os.Bundle;
@@ -83,6 +85,7 @@ public class SplashActivity extends Activity {
 	};
 	private SharedPreferences mPref;
 	private RelativeLayout rl_root;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -107,7 +110,29 @@ public class SplashActivity extends Activity {
 		AlphaAnimation alpha = new AlphaAnimation(0.2f, 1);
 		alpha.setDuration(2000);
 		rl_root.startAnimation(alpha);
+
+		//创建桌面快捷方式
+		createShortCut();
 	}
+	//创建安全卫士的桌面快捷方式
+	private void createShortCut() {
+		Intent intent = new Intent();
+		intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+		//设置创建快捷方式的个数(false表示只能创建一个,true表示可以创建无数个)
+		intent.putExtra("duplicate" , false);
+
+		Intent shortCutIntent = new Intent();
+		shortCutIntent.setAction("HomeActivity");
+		shortCutIntent.addCategory(Intent.CATEGORY_DEFAULT);
+
+		//设置快捷方式名字
+		intent.putExtra(Intent.EXTRA_SHORTCUT_NAME , "手机卫士");
+		//设置快捷方式图标
+		intent.putExtra(Intent.EXTRA_SHORTCUT_ICON , BitmapFactory.decodeResource(getResources() , R.drawable.ic_launcher));
+		intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT , shortCutIntent);
+		sendBroadcast(intent);
+	}
+
 	//获取本地版本名
 	private String getVersionName(){
 		PackageManager packageManager = getPackageManager();
