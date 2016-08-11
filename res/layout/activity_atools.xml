@@ -36,4 +36,18 @@
 		android:onClick="backUpSms"
 		android:drawableLeft="@android:drawable/ic_menu_camera"
 		/>
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/text_atools_selector"
+		android:gravity="center_vertical"
+		android:text="程序锁"
+		android:textColor="@color/black"
+		android:padding="10dp"
+		android:drawablePadding="5dp"
+		android:clickable="true"
+		android:textSize="22sp"
+		android:onClick="appLock"
+		android:drawableLeft="@android:drawable/ic_menu_camera"
+		/>
 </LinearLayout>

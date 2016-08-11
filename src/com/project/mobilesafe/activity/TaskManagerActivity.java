@@ -208,6 +208,13 @@ public class TaskManagerActivity extends Activity {
             }else{
                 holder.cbProcessStatus.setChecked(false);
             }
+
+            //判断当前展示的item是否是自己的应用，如果是，将CheckBox隐藏掉
+            if(taskInfo.getPackageName().equals(getPackageName())){
+                holder.cbProcessStatus.setVisibility(View.INVISIBLE);
+            }else{
+                holder.cbProcessStatus.setVisibility(View.VISIBLE);
+            }
             return view;
         }
     }
@@ -283,6 +290,10 @@ public class TaskManagerActivity extends Activity {
                 if(object != null && object instanceof TaskInfo){
                     TaskInfo taskInfo = (TaskInfo) object;
                     ViewHolder holder = (ViewHolder) view.getTag();
+                    //判断当前的item是否是自己的应用，如果是，跳过点击勾选
+                    if(taskInfo.getPackageName().equals(getPackageName())){
+                        return;
+                    }
                     //判断当前的item是否被勾选
                     if(taskInfo.isChecked()){
                         taskInfo.setChecked(false);

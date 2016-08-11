@@ -11,11 +11,15 @@ import java.net.URL;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 import com.project.mobilesafe.R;
+import com.project.mobilesafe.bean.VirusInfo;
+import com.project.mobilesafe.db.dao.AntivirusDao;
 import com.project.mobilesafe.utils.StreamUtils;
 
 import android.app.Activity;
@@ -85,6 +89,7 @@ public class SplashActivity extends Activity {
 	};
 	private SharedPreferences mPref;
 	private RelativeLayout rl_root;
+	private AntivirusDao antivirusDao;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +103,11 @@ public class SplashActivity extends Activity {
 		mPref = getSharedPreferences("config", MODE_PRIVATE);
 		//拷贝归属地查询数据库
 		copyDB("address.db");
+		//拷贝病毒数据库
+		copyDB("antivirus.db");
+		//更新病毒数据库
+		updateVirus();
+
 		//判断是否需要自动更新
 		boolean auto_update = mPref.getBoolean("auto_update", true);
 		if(auto_update){
@@ -114,6 +124,40 @@ public class SplashActivity extends Activity {
 		//创建桌面快捷方式
 		createShortCut();
 	}
+	//更新病毒数据库
+	private void updateVirus() {
+
+		antivirusDao = new AntivirusDao();
+		//从服务器获取最新的md5的病毒特征码
+		HttpUtils httpUtils = new HttpUtils();
+
+		//本机地址使用localhost,如果用模拟器加载本及地址，可以用ip(10.0.2.2)来替换
+		String url = "http://10.0.2.2:8080/virus.json";
+		httpUtils.send(HttpRequest.HttpMethod.GET, url, new RequestCallBack<String>() {
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				System.out.println(responseInfo.result);
+				try {
+//					JSONObject jsonObject = new JSONObject(responseInfo.result);
+//					String md5 = jsonObject.getString("md5");
+//					String desc = jsonObject.getString("desc");
+					Gson gson = new Gson();
+					//第一个参数为Json数据,第二个参数为与Json相对应的bean
+					VirusInfo virusInfo = gson.fromJson(responseInfo.result, VirusInfo.class);
+					antivirusDao.addVirus(virusInfo.md5 , virusInfo.desc);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+
+			@Override
+			public void onFailure(HttpException e, String s) {
+
+			}
+		});
+	}
+
 	//创建安全卫士的桌面快捷方式
 	private void createShortCut() {
 		Intent intent = new Intent();

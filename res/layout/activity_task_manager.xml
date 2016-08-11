@@ -18,10 +18,11 @@
             android:id="@+id/tv_process"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:text="运行中进程:6个"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/tv_memory"
@@ -29,7 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="剩余/总内存"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
 
     </LinearLayout>
 

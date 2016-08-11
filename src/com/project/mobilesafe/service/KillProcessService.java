@@ -13,6 +13,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class KillProcessService extends Service {
+
+    private LockScreenReceiver receiver;
+
     public KillProcessService() {
     }
 
@@ -39,9 +42,9 @@ public class KillProcessService extends Service {
     public void onCreate() {
         super.onCreate();
         //注册锁屏的广播接收者
-        LockScreenReceiver receiver = new LockScreenReceiver();
+        receiver = new LockScreenReceiver();
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
-        registerReceiver(receiver , filter);
+        registerReceiver(receiver, filter);
 
         //计时器
         Timer timer = new Timer();
@@ -57,5 +60,9 @@ public class KillProcessService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        //当应用程序退出时，需要反注册掉广播(否则会报错，但不影响系统)
+        unregisterReceiver(receiver);
+        //手动回收(只有置为空时，JVM才会回收，优化系统)
+        receiver = null ;
     }
 }

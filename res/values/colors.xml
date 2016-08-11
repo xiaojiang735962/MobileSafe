@@ -2,4 +2,5 @@
 <resources>
     <color name="black">#000</color>
     <color name="green">#8866ff00</color>
+    <color name="textColorPrimaryDark">#ff000000</color>
 </resources>

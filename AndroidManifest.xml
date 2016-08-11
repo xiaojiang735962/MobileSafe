@@ -78,6 +78,11 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".receiver.KillProcessAllReceiver">
+            <intent-filter>
+                <action android:name="com.project.mobilesafe" />
+            </intent-filter>
+        </receiver>
         <receiver android:name=".receiver.SMSReceiver">
             <intent-filter android:priority="2147483647">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
@@ -111,7 +116,25 @@
         <service
             android:name=".service.KillProcessService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+        <!-- 桌面小部件广播 -->
+        <receiver android:name=".receiver.MyAppWidgetReceiver">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/example_appwidget_info" />
+        </receiver>
+
+        <service
+            android:name=".service.KillProcessWidgetService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activity.AntivirusActivity" />
+        <activity android:name=".activity.AppLockActivity"></activity>
     </application>
 
 </manifest>
