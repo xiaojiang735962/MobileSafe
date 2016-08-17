@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import com.project.mobilesafe.R;
 import com.project.mobilesafe.service.AddressService;
 import com.project.mobilesafe.service.CallSafeService;
+import com.project.mobilesafe.service.WatchDogService;
 import com.project.mobilesafe.utils.ServiceStatusUtils;
 import com.project.mobilesafe.view.SettingClickView;
 import com.project.mobilesafe.view.SettingItemView;
@@ -25,6 +26,7 @@ public class SettingActivity extends Activity {
     private SettingClickView scvAddressStyle;
     private SettingClickView scvAddressLocation;
     private SharedPreferences mPref;
+    private SettingItemView sivWacthDog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,34 @@ public class SettingActivity extends Activity {
         initAddressStyle();
         initAddressLocation();
         initBlackNumberView();
+        initWatchDogView();
     }
+    //设置看门狗服务
+    private void initWatchDogView() {
+        sivWacthDog = (SettingItemView) findViewById(R.id.siv_watchdog);
 
+        boolean serviceRunning = ServiceStatusUtils.isServiceRunning(this, "com.project.mobilesafe.service.WatchDogService");
+        if (serviceRunning) {
+            sivWacthDog.setChecked(true);
+        } else {
+            sivWacthDog.setChecked(false);
+        }
+        sivWacthDog.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (sivWacthDog.isChecked()) {
+                    sivWacthDog.setChecked(false);
+                    //停止看门狗服务
+                    stopService(new Intent(SettingActivity.this, WatchDogService.class));
+                } else {
+                    sivWacthDog.setChecked(true);
+                    //开启看门狗服务
+                    startService(new Intent(SettingActivity.this, WatchDogService.class));
+                }
+            }
+        });
+    }
+    //黑名单服务设置
     private void initBlackNumberView() {
         sivCallSafe = (SettingItemView) findViewById(R.id.siv_callsafe);
 
@@ -53,11 +81,11 @@ public class SettingActivity extends Activity {
             public void onClick(View v) {
                 if (sivCallSafe.isChecked()) {
                     sivCallSafe.setChecked(false);
-                    //停止归属地服务
+                    //停止黑名单服务
                     stopService(new Intent(SettingActivity.this, CallSafeService.class));
                 } else {
                     sivCallSafe.setChecked(true);
-                    //开启归属地服务
+                    //开启黑名单服务
                     startService(new Intent(SettingActivity.this, CallSafeService.class));
                 }
             }

@@ -23,11 +23,14 @@ package com.project.mobilesafe.fragment;/*
 */
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -49,6 +52,7 @@ public class UnlockFragment extends Fragment{
     private List<AppInfo> appInfos;
     private AppLockDao appLockDao;
     private List<AppInfo> unlockList;
+    private UnlockAdapter adapter;
 
     //此方法类似Activity中onCreate方法的中的setContentView()
     @Override
@@ -76,7 +80,7 @@ public class UnlockFragment extends Fragment{
                 unlockList.add(appInfo);
             }
         }
-        UnlockAdapter adapter = new UnlockAdapter();
+        adapter = new UnlockAdapter();
         lvUnlock.setAdapter(adapter);
     }
     private class UnlockAdapter extends BaseAdapter{
@@ -98,9 +102,10 @@ public class UnlockFragment extends Fragment{
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup viewGroup) {
-            View view = null ;
+        public View getView(final int position, View convertView, ViewGroup viewGroup) {
+            final View view;
             ViewHolder holder ;
+            final AppInfo appInfo;
             if(convertView == null){
                 view = View.inflate(getActivity(), R.layout.item_unlock, null);
                 holder = new ViewHolder();
@@ -112,8 +117,40 @@ public class UnlockFragment extends Fragment{
                 view = convertView;
                 holder = (ViewHolder) view.getTag();
             }
+            appInfo = unlockList.get(position);
             holder.ivIcon.setImageDrawable(unlockList.get(position).getIcon());
             holder.tvAppName.setText(unlockList.get(position).getApkName());
+            //把程序添加到程序锁数据库里
+            holder.ivLock.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //初始化一个位移动画
+                    TranslateAnimation translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF , 0 , Animation.RELATIVE_TO_SELF , 1.0f
+                        ,Animation.RELATIVE_TO_SELF , 0 , Animation.RELATIVE_TO_SELF , 0);
+                    //设置动画时间
+                    translateAnimation.setDuration(1000);
+                    //开始动画
+                    view.startAnimation(translateAnimation);
+
+                    new Thread(){
+                        @Override
+                        public void run() {
+                            SystemClock.sleep(1000);
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    //添加到数据库中
+                                    appLockDao.add(appInfo.getApkPackageName());
+                                    //从当前页面移除对象
+                                    unlockList.remove(position);
+                                    //刷新界面
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                        }
+                    }.start();
+                }
+            });
             return view;
         }
     }

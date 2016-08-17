@@ -4,6 +4,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     compile project(':appcompat_v7')
     compile files('libs/gson-2.2.4.jar')
+    compile files('libs/YoumiSdk_v6.1.0_2016-02-26.jar')
 }
 
 android {

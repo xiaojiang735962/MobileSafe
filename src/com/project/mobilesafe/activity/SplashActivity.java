@@ -46,6 +46,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import net.youmi.android.AdManager;
+
 public class SplashActivity extends Activity {
 
 	protected static final int CODE_UPDATE_DIALOG = 0;
@@ -94,6 +96,7 @@ public class SplashActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		AdManager.getInstance(this).init("86adaf6654db1969", "2c68bfe4a3a52a55",false);
 		setContentView(R.layout.activity_splash);
 		
 		rl_root = (RelativeLayout) findViewById(R.id.rl_root);

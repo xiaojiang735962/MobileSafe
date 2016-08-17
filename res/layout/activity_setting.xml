@@ -42,5 +42,13 @@
 		setting:desc_on="黑名单服务已经开启"
 		setting:desc_off="黑名单服务已经关闭"
 		/>
+	<com.project.mobilesafe.view.SettingItemView
+		android:id="@+id/siv_watchdog"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		setting:set_title="看门狗服务设置"
+		setting:desc_on="看门狗服务已经开启"
+		setting:desc_off="看门狗服务已经关闭"
+		/>
     
 </LinearLayout>

@@ -7,9 +7,14 @@ import com.project.mobilesafe.utils.ToastUtils;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
+import net.youmi.android.listener.Interface_ActivityListener;
+import net.youmi.android.offers.OffersManager;
 
 public class AToolsActivity extends Activity {
 	@Override
@@ -61,5 +66,18 @@ public class AToolsActivity extends Activity {
 	public void appLock(View v){
 		Intent intent = new Intent(this , AppLockActivity.class);
 		startActivity(intent);
+	}
+	//软件推荐功能(广告)
+	public void appRecomment(View v){
+		OffersManager.getInstance(this).showOffersWall(new Interface_ActivityListener() {
+
+			/**
+			 * 当积分墙销毁的时候，即积分墙的Activity调用了onDestory的时候回调
+			 */
+			@Override
+			public void onActivityDestroy(Context context) {
+				Toast.makeText(context, "全屏积分墙退出了", Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 }

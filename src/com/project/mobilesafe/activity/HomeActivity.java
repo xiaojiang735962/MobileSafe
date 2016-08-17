@@ -63,9 +63,17 @@ public class HomeActivity extends Activity {
                         //跳转至TaskManagerActivity(进程管理)
                         startActivity(new Intent(HomeActivity.this, TaskManagerActivity.class));
                         break;
+                    case 4:
+                        //跳转至TrafficManagerActivity(流量统计)
+                        startActivity(new Intent(HomeActivity.this, TrafficManagerActivity.class));
+                        break;
                     case 5:
                         //跳转至AntivirusActivity(手机杀毒)
                         startActivity(new Intent(HomeActivity.this, AntivirusActivity.class));
+                        break;
+                    case 6:
+                        //跳转至CleanCacheActivity(缓存清理)
+                        startActivity(new Intent(HomeActivity.this, CleanCacheActivity.class));
                         break;
                     case 7:
                         //跳转至AToolsActivity(高级工具)
